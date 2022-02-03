@@ -1,0 +1,42 @@
+
+.card-movie-coming {
+  display: flex;
+  width: 100%;
+  height: inherit;
+  aspect-ratio: 3/1;
+  padding-bottom: 1px;
+  border-bottom: 1px solid white;
+  color: white;
+  text-decoration: none;
+}
+
+.card-movie-coming .number {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.card-movie-coming .poster-movie-coming {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-poster-movie-coming {
+  width: 70%;
+  height: inherit;
+  aspect-ratio: 2/3;
+}
+
+.card-movie-coming .info-movie-coming {
+  flex: 4;
+  padding-top: 10px;
+}
+
+.card-movie-coming:hover {
+    border-bottom: 1px solid rgb(244, 167, 187);
+    color: white;
+}
+
