@@ -1,0 +1,230 @@
+.container_1 {
+  background-color: rgb(0, 0, 0);
+  min-height: 100vh;
+  padding-bottom: 5px;
+}
+
+.backdrop {
+  height: 600px;
+  background-size: cover;
+  background-position: 50% 0;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.backdrop::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(2, 13, 24, 0.75);
+}
+
+.shiftup {
+  margin-top: -330px;
+  position: relative;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail-movie {
+  display: flex;
+  /* width: 100%; */
+}
+
+.detail-movie-left {
+  flex: 1;
+}
+
+.detail-movie-right {
+  flex: 3;
+  color: white;
+  padding-left: 20px;
+  max-width: 1030.46px;
+}
+
+.img-poster {
+  width: 83%;
+  height: auto;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (width < 768px) {
+  .detail-movie {
+    display: block;
+  }
+  .img-poster {
+    width: fit-content;
+  }
+}
+
+.detail-movie-right .title {
+  font-size: 2.5rem;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: rgb(181, 181, 181);
+}
+
+.horizontal-dl dt {
+  float: left;
+  clear: left;
+  width: 30%;
+  width: 120px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.detail-movie .detail-movie-right .horizontal-dl {
+  margin-top: 19px;
+  margin-bottom: 35px;
+}
+
+.intro {
+  color: #b5b5b5 !important;
+  margin-bottom: 15px;
+}
+
+.section-header {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 2em 0 1.2em;
+  font-size: 0.9em;
+}
+
+.cast {
+  overflow-y: hidden;
+  position: relative;
+}
+
+.arrow-class {
+  position: absolute;
+  top: -40px;
+  right: 0px;
+}
+
+.header-lister {
+  --review-color: rgb(33 33 33 / 53%);
+  background-color: var(--review-color);
+}
+
+.lister-controls-group {
+  height: 24px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 7%;
+  /* float: right; */
+}
+
+.lister-controls {
+}
+.lister-list {
+  margin-top: 15px;
+}
+
+.lister-item {
+  background-color: rgb(33 33 33 / 53%);
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+.star-icon {
+  fill: #c39400;
+}
+
+.title-review {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.display-name-date {
+  font-size: 14px;
+}
+
+.display-name-link {
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(244, 167, 187);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: rgb(244, 167, 187);
+}
+
+.content-review {
+  line-height: 18px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.section-header-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-cast {
+  width: 100%;
+  aspect-ratio: 0.85;
+}
+
+figure {
+  width: 64%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  margin: 10px auto 0 auto;
+  border-radius: 50%;
+}
+
+.name-actor {
+  width: fit-content;
+  margin: 10px auto 0 auto;
+  font-size: 16px;
+}
+
+.character {
+  color: #7a7a7a;
+  width: fit-content;
+  margin: 0px auto 0 auto;
+  font-size: 14px;
+}
+
+.card-cast:hover  div:hover  a:hover > figure {
+  box-shadow: 0 0 0 2px rgb(244, 167, 187);
+}
+
+.title-modal {
+  color: black;
+}
+
+.headline-input {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 3px;
+}
+
+.review-input {
+  min-height: calc(100vh - 480px);
+  
+
+}

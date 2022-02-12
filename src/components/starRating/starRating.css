@@ -1,0 +1,8 @@
+.input-star {
+    display: none;
+}
+
+.user-rating {
+    display: inline-block;
+    transform: translate(5px, 2px);
+}

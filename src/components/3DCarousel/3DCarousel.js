@@ -5,7 +5,7 @@ import {
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
 
-const Carousel = ({
+const Carousel3D = ({
   imageList,
   imageClassName,
   id,
@@ -197,4 +197,4 @@ const Carousel = ({
   );
 };
 
-export default Carousel;
+export default Carousel3D;

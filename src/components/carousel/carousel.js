@@ -4,12 +4,19 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./Owl.css";
 import IMG1 from "../../assets/img/img1.jpg";
 
-function carousel(props) {
-  const { children } = props;
+function Carousel(props) {
+  const { children, navClass, navContainerClass } = props;
   return (
     <div>
       <div class="container-fluid">
-        <OwlCarousel items={3} className="owl-theme" loop nav margin={8} autoplay={false} autoplayTimeout={5000}>
+        <OwlCarousel
+          items={5}
+          margin={8}
+          autoplay={false}
+          nav
+          navClass={navClass}
+          navContainerClass={navContainerClass}
+        >
           {/* <div>
             <img className="img" src={IMG1} />
           </div> */}
@@ -20,4 +27,4 @@ function carousel(props) {
   );
 }
 
-export default carousel;
+export default Carousel;

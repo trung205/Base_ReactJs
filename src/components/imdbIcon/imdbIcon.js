@@ -1,5 +1,6 @@
 import "./imdbIcon.css";
-function ImdbIcon() {
+function ImdbIcon(props) {
+  const { score } = props;
   return (
     <div>
       <span className="imdb-icon">
@@ -14,7 +15,7 @@ function ImdbIcon() {
           ></path>
         </svg>
       </span>
-      <span className="has-text-weight-bold">7.6</span>
+      <span className="has-text-weight-bold">{score}</span>
     </div>
   );
 }
