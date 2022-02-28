@@ -39,6 +39,7 @@ const Carousel3D = ({
 
     images.push({
       index: i,
+      id: imageList[i].id,
       url: imageList[i].url,
       title: imageList[i].title,
     });
@@ -168,6 +169,7 @@ const Carousel3D = ({
             className="carousel_____image-container-wrapper"
             key={image.index}
             onMouseEnter={() => handleMouseEnter()}
+            onClick={() => onClick(image.id)}
           >
             {image.title != "" ? (
               <div
@@ -175,7 +177,9 @@ const Carousel3D = ({
                 className={`carousel_____image-overlay carousel_____image-overlay-leave ${overlayClassName}`}
                 onMouseLeave={() => handleMouseLeave()}
               >
-                <h1 className="carousel_____overlay-title">{image.title}</h1>
+                <h1 className="carousel_____overlay-title" align="center">
+                  {image.title}
+                </h1>
               </div>
             ) : (
               <div
@@ -188,7 +192,7 @@ const Carousel3D = ({
               alt="carousel"
               id={image.index}
               className={`carousel_____image  ${imageClassName}`}
-              onClick={onClick}
+              // onClick={() => onClick(image.id)}
             />
           </div>
         );

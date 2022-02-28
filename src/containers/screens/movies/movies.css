@@ -42,7 +42,7 @@
   flex: 3;
   color: white;
   padding-left: 20px;
-  max-width: 1030.46px;
+  max-width: 66vw;
 }
 
 .img-poster {
@@ -53,7 +53,17 @@
   margin-right: auto;
 }
 
-img {
+.img-actor {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* .img-poster img {
+  width: 100%;
+  object-fit: cover;
+} */
+
+.section-movie img {
   width: 100%;
   object-fit: cover;
 }
@@ -64,6 +74,9 @@ img {
   }
   .img-poster {
     width: fit-content;
+  }
+  .detail-movie-right {
+    max-width: 100vw;
   }
 }
 
@@ -160,12 +173,12 @@ img {
   margin-right: 10px;
 }
 
-a {
+.section-movie a {
   text-decoration: none;
   color: rgb(244, 167, 187);
 }
 
-a:hover {
+.section-movie a:hover {
   text-decoration: underline;
   color: rgb(244, 167, 187);
 }
@@ -188,7 +201,7 @@ a:hover {
   aspect-ratio: 0.85;
 }
 
-figure {
+.link-actor figure {
   width: 64%;
   aspect-ratio: 1;
   overflow: hidden;
@@ -209,7 +222,7 @@ figure {
   font-size: 14px;
 }
 
-.card-cast:hover  div:hover  a:hover > figure {
+.card-cast:hover div:hover a:hover > figure {
   box-shadow: 0 0 0 2px rgb(244, 167, 187);
 }
 
@@ -225,6 +238,5 @@ figure {
 
 .review-input {
   min-height: calc(100vh - 480px);
-  
-
+  padding: 5px 10px;
 }

@@ -6,7 +6,8 @@
 }
 
 .container_1 {
-    overflow: auto;
+  overflow: auto;
+  /* background-color: #06121e; */
 }
 
 .section-left {
@@ -17,6 +18,7 @@
 
 .section-right {
   flex: 3;
+  color: white;
 }
 .section-left h3 {
   color: white;
@@ -28,4 +30,81 @@
 .section-left dd {
   margin-bottom: 1.2em;
   color: #b5b5b5;
+}
+
+.avatar-actor {
+  min-width: 0px;
+}
+
+.avatar-actor img {
+  width: 100%;
+}
+
+.content-left {
+  margin: auto;
+  width: 80%;
+}
+
+@media (width < 768px) {
+  .section {
+    display: block;
+  }
+  .content-left {
+    width: fit-content;
+  }
+}
+
+.section-right div {
+  color: #b5b5b5 !important;
+  /* margin-bottom: 15px; */
+  font-size: 15px;
+}
+
+.section-right h3 {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.list-film {
+  display: flex;
+  width: 100%;
+
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.list-film-item {
+  flex: none;
+}
+
+.list-film-content {
+  width: 80%;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  font-size: 16px;
+  /* line-height: 24px; */
+}
+
+.item-img {
+  width: 100%;
+  aspect-ratio: 2/3;
+}
+
+@media only screen and (width >= 1216px) {
+  .list-film-item {
+    width: 25%;
+  }
+}
+@media only screen and (769px < width < 1216px) {
+  .list-film-item {
+    width: 33.3333%;
+  }
+}
+@media only screen and ( width <= 769px) {
+  .list-film-item {
+    width: 50%;
+  }
+  .list-film-content {
+    margin: auto;
+  }
 }

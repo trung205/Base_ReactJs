@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE = 'http://localhost:3000/api/v1';
+const API_BASE = "http://localhost:3000/api/v1";
 const axiosInstance = axios.create({
   baseURL: API_BASE,
   timeout: 30000,
   headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
 });
 axiosInstance.interceptors.response.use(
@@ -30,7 +30,7 @@ axiosInstance.interceptors.response.use(
         message: error.message,
       };
     }
-  },
+  }
 );
 axiosInstance.interceptors.request.use(
   async (request) => {
@@ -38,6 +38,59 @@ axiosInstance.interceptors.request.use(
   },
   async (error) => {
     return Promise.reject(error);
-  },
+  }
 );
+
+function handleResult(api) {
+  return api
+    .then((res) => {
+      return Promise.resolve(res.data);
+    })
+    .catch((error) => {
+      return Promise.reject(new Error("co loi xay ra", error));
+    });
+}
+
+export function requestAllMovie(page) {
+  return handleResult(axiosInstance.get(`/movies?page=${page}`));
+}
+
+export function requestSignUp(payload) {
+  return handleResult(axiosInstance.post("/auth/signUp", payload));
+}
+
+export function requestLoginManual(payload) {
+  return handleResult(axiosInstance.post("/auth/loginManual", payload));
+}
+
+export function requestListActor(id) {
+  return handleResult(axiosInstance.get(`/movies/${id}/cast`));
+}
+
+export function requestMovieDetail(id) {
+  return handleResult(axiosInstance.get(`/movies/${id}?language=vi-VN`));
+}
+export function requestActorInfo(id) {
+  return handleResult(axiosInstance.get(`/actors/${id}?language=vi-VN`));
+}
+export function requestImageActor(id) {
+  return handleResult(axiosInstance.get(`https://api.themoviedb.org/3/person/${id}/images?api_key=1025bfc6c758fa3270b91d47122cb4ca`));
+}
+
+export function requestMovieByActor(id) {
+  return handleResult(axiosInstance.get(`http://localhost:3000/api/v1/actors/${id}/movies`));
+}
+export function requestListImageActor(id) {
+  return axiosInstance.get(`https://api.themoviedb.org/3/person/${id}/images?api_key=1025bfc6c758fa3270b91d47122cb4ca`);
+}
+
+export function requestCreatePost(payload) {
+  return handleResult(axiosInstance.post("/posts", payload));
+}
+
+export function requestPost(id,page) {
+  return handleResult(axiosInstance.get(`/posts/${id}?page=${page}&limit=10`));
+}
+
+
 export default axiosInstance;

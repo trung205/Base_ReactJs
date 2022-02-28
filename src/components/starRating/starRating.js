@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import "./starRating.css";
 
 function StarRating(props) {
+  const { getStar } = props;
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+
+  useEffect(() => {
+    getStar(rating);
+  }, [rating]);
   return (
     <div>
-      {[...Array(10)].map((star, i) => {
+      {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
         return (
           <label>

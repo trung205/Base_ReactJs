@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  background-color: #61dafb;
+  width: 100%;
+  height: 56px;
+}
+
+.header .start {
+  display: flex;
+  flex: 1;
+  background-color: red;
+}
+.header .center {
+  display: flex;
+  flex: 3;
+  background-color: rgba(33, 33, 33, 0.98);
+  padding-left: 15px;
+  padding-right: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.header .end {
+  display: flex;
+  flex: 1;
+  background-color: rgba(33, 33, 33, 0.98);
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-img {
+  aspect-ratio: auto 32 / 32;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.link-option {
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.link-option:hover {
+  color: rgb(0, 0, 0);
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: rgb(0, 0, 0);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}

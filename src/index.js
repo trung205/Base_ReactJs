@@ -8,14 +8,12 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-// import Home from "./containers/screens/home/home"
-// import Movie from "./containers/screens/movies/movies"
-import Actor from "./containers/screens/actor/actor"
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Actor />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

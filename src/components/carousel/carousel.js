@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -5,7 +6,8 @@ import "./Owl.css";
 import IMG1 from "../../assets/img/img1.jpg";
 
 function Carousel(props) {
-  const { children, navClass, navContainerClass } = props;
+  const { children, navClass, navContainerClass, data, slideBy } = props;
+  useEffect(() => {}, [data]);
   return (
     <div>
       <div class="container-fluid">
@@ -16,6 +18,7 @@ function Carousel(props) {
           nav
           navClass={navClass}
           navContainerClass={navContainerClass}
+          slideBy={slideBy}
         >
           {/* <div>
             <img className="img" src={IMG1} />

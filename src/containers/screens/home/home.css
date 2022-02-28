@@ -192,40 +192,12 @@ body {
   padding-bottom: 5px;
 }
 
-.card1 {
-  display: block;
-  background-color: hsla(0, 100%, 100%, 0.09);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
-    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
-    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
-  overflow: hidden;
-  width: 80%;
-  height: auto;
-  /* aspect-ratio: 2/3; */
-  position: relative;
-  object-fit: cover;
-}
 
 h2 {
   color: white;
 }
 
-.info {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: inherit;
-  /* aspect-ratio: 2/3; */
-  background: linear-gradient(
-    180deg,
-    rgb(2 0 36 / 35%) 0%,
-    rgb(29 9 121 / 31%) 12%,
-    rgb(0 0 0 / 83%) 100%
-  );
-  align-items: flex-end;
-  transform: translateY(100%) translateZ(0);
-  transition: transform 0.3s ease-out;
-}
+
 
 .movie-name {
   /* bottom: 0px; */

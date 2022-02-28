@@ -18,7 +18,7 @@
 
   &__content {
     width: 520px;
-    height: 600px;
+    max-height: 95vh;
     margin:  auto;
     background-color: #fff;
     border-radius: 5px;
@@ -27,6 +27,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-100px);
+    overflow: auto;
   }
 
   &.active &__content {

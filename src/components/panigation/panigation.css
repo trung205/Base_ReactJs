@@ -1,0 +1,22 @@
+.container-panigation {
+  display: flex;
+}
+
+.container-panigation .button-group {
+}
+@media (width < 768px) {
+  .container-panigation {
+    display: block;
+  }
+  .container-panigation .button-group {
+    text-align: center;
+  }
+
+  .container-panigation .pagination {
+      justify-content: center;
+  }
+}
+
+.active .btn {
+    border-color: rgb(244, 167, 187);
+}
