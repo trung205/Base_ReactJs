@@ -1,238 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./search.css";
-
-var countries = [
-  "Afghanistan",
-  "Albania",
-  "Algeria",
-  "Andorra",
-  "Angola",
-  "Anguilla",
-  "Antigua & Barbuda",
-  "Argentina",
-  "Armenia",
-  "Aruba",
-  "Australia",
-  "Austria",
-  "Azerbaijan",
-  "Bahamas",
-  "Bahrain",
-  "Bangladesh",
-  "Barbados",
-  "Belarus",
-  "Belgium",
-  "Belize",
-  "Benin",
-  "Bermuda",
-  "Bhutan",
-  "Bolivia",
-  "Bosnia & Herzegovina",
-  "Botswana",
-  "Brazil",
-  "British Virgin Islands",
-  "Brunei",
-  "Bulgaria",
-  "Burkina Faso",
-  "Burundi",
-  "Cambodia",
-  "Cameroon",
-  "Canada",
-  "Cape Verde",
-  "Cayman Islands",
-  "Central Arfrican Republic",
-  "Chad",
-  "Chile",
-  "China",
-  "Colombia",
-  "Congo",
-  "Cook Islands",
-  "Costa Rica",
-  "Cote D Ivoire",
-  "Croatia",
-  "Cuba",
-  "Curacao",
-  "Cyprus",
-  "Czech Republic",
-  "Denmark",
-  "Djibouti",
-  "Dominica",
-  "Dominican Republic",
-  "Ecuador",
-  "Egypt",
-  "El Salvador",
-  "Equatorial Guinea",
-  "Eritrea",
-  "Estonia",
-  "Ethiopia",
-  "Falkland Islands",
-  "Faroe Islands",
-  "Fiji",
-  "Finland",
-  "France",
-  "French Polynesia",
-  "French West Indies",
-  "Gabon",
-  "Gambia",
-  "Georgia",
-  "Germany",
-  "Ghana",
-  "Gibraltar",
-  "Greece",
-  "Greenland",
-  "Grenada",
-  "Guam",
-  "Guatemala",
-  "Guernsey",
-  "Guinea",
-  "Guinea Bissau",
-  "Guyana",
-  "Haiti",
-  "Honduras",
-  "Hong Kong",
-  "Hungary",
-  "Iceland",
-  "India",
-  "Indonesia",
-  "Iran",
-  "Iraq",
-  "Ireland",
-  "Isle of Man",
-  "Israel",
-  "Italy",
-  "Jamaica",
-  "Japan",
-  "Jersey",
-  "Jordan",
-  "Kazakhstan",
-  "Kenya",
-  "Kiribati",
-  "Kosovo",
-  "Kuwait",
-  "Kyrgyzstan",
-  "Laos",
-  "Latvia",
-  "Lebanon",
-  "Lesotho",
-  "Liberia",
-  "Libya",
-  "Liechtenstein",
-  "Lithuania",
-  "Luxembourg",
-  "Macau",
-  "Macedonia",
-  "Madagascar",
-  "Malawi",
-  "Malaysia",
-  "Maldives",
-  "Mali",
-  "Malta",
-  "Marshall Islands",
-  "Mauritania",
-  "Mauritius",
-  "Mexico",
-  "Micronesia",
-  "Moldova",
-  "Monaco",
-  "Mongolia",
-  "Montenegro",
-  "Montserrat",
-  "Morocco",
-  "Mozambique",
-  "Myanmar",
-  "Namibia",
-  "Nauro",
-  "Nepal",
-  "Netherlands",
-  "Netherlands Antilles",
-  "New Caledonia",
-  "New Zealand",
-  "Nicaragua",
-  "Niger",
-  "Nigeria",
-  "North Korea",
-  "Norway",
-  "Oman",
-  "Pakistan",
-  "Palau",
-  "Palestine",
-  "Panama",
-  "Papua New Guinea",
-  "Paraguay",
-  "Peru",
-  "Philippines",
-  "Poland",
-  "Portugal",
-  "Puerto Rico",
-  "Qatar",
-  "Reunion",
-  "Romania",
-  "Russia",
-  "Rwanda",
-  "Saint Pierre & Miquelon",
-  "Samoa",
-  "San Marino",
-  "Sao Tome and Principe",
-  "Saudi Arabia",
-  "Senegal",
-  "Serbia",
-  "Seychelles",
-  "Sierra Leone",
-  "Singapore",
-  "Slovakia",
-  "Slovenia",
-  "Solomon Islands",
-  "Somalia",
-  "South Africa",
-  "South Korea",
-  "South Sudan",
-  "Spain",
-  "Sri Lanka",
-  "St Kitts & Nevis",
-  "St Lucia",
-  "St Vincent",
-  "Sudan",
-  "Suriname",
-  "Swaziland",
-  "Sweden",
-  "Switzerland",
-  "Syria",
-  "Taiwan",
-  "Tajikistan",
-  "Tanzania",
-  "Thailand",
-  "Timor L'Este",
-  "Togo",
-  "Tonga",
-  "Trinidad & Tobago",
-  "Tunisia",
-  "Turkey",
-  "Turkmenistan",
-  "Turks & Caicos",
-  "Tuvalu",
-  "Uganda",
-  "Ukraine",
-  "United Arab Emirates",
-  "United Kingdom",
-  "United States of America",
-  "Uruguay",
-  "Uzbekistan",
-  "Vanuatu",
-  "Vatican City",
-  "Venezuela",
-  "Vietnam",
-  "Virgin Islands (US)",
-  "Yemen",
-  "Zambia",
-  "Zimbabwe",
-];
+import { requestListMovieSearch } from "../../common/axios";
+import { useNavigate } from "react-router-dom";
 
 function Search(props) {
+  const navigate = useNavigate();
   const { classInput, classForm, classButton } = props;
+  // console.log(movie, "search");
+  const [query, setQuery] = useState("");
+  const [movie, setMovie] = useState([]);
+
+  const handleMovie = (id) => {
+    navigate(`/movies/${id}`);
+  };
 
   function autocomplete(inp, arr) {
     var currentFocus;
     inp.addEventListener("input", function (e) {
-      console.dir(this);
+      // console.dir(this);
       var a,
         b,
         i,
@@ -247,14 +32,23 @@ function Search(props) {
       a.setAttribute("class", "autocomplete-items");
       this.parentNode.appendChild(a);
       for (i = 0; i < arr.length; i++) {
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        if (
+          arr[i].original_title.substr(0, val.length).toUpperCase() ==
+          val.toUpperCase()
+        ) {
           b = document.createElement("DIV");
-          b.innerHTML = "<span><img src='https://image.tmdb.org/t/p/w342/hE3LRZAY84fG19a18pzpkZERjTE.jpg' width='40' height='60'/></span>"
-          b.innerHTML += "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.innerHTML = `<span class='back-drop-search'><img src='https://image.tmdb.org/t/p/original${arr[i]?.backdrop_path}' width='76.8' height='43.2'/></span>`;
+          b.innerHTML +=
+            "<strong>" +
+            arr[i].original_title.substr(0, val.length) +
+            "</strong>";
+          b.innerHTML += arr[i].original_title.substr(val.length);
+          b.innerHTML +=
+            "<input type='hidden' value='" + arr[i].original_title + "'>" + "<input type='hidden' value='" + arr[i].id + "'>";
           b.addEventListener("click", function (e) {
+            console.log(arr[i], "id");
             inp.value = this.getElementsByTagName("input")[0].value;
+            handleMovie(this.getElementsByTagName("input")[1].value);
             closeAllLists();
           });
           a.appendChild(b);
@@ -302,9 +96,22 @@ function Search(props) {
     });
   }
 
+  const handleSearch = async (e) => {
+    setQuery(e.target.value);
+  };
+
+  useEffect(async () => {
+    try {
+      let res = await requestListMovieSearch(query);
+      setMovie([...res.results]);
+      // console.log(movie, "1");
+    } catch (error) {}
+  }, [query]);
+
   useEffect(() => {
-    autocomplete(document.getElementById("input-search"), countries);
-  }, []);
+    // console.log("2");
+    autocomplete(document.getElementById("input-search"), movie);
+  }, [movie]);
 
   return (
     <form
@@ -320,6 +127,7 @@ function Search(props) {
           id="input-search"
           name="search"
           placeholder="Tìm kiếm..."
+          onChange={handleSearch}
         />
       </div>
       <button type="submit" className={"button-search " + classButton}>

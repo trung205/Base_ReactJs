@@ -95,7 +95,7 @@ function Actor() {
                           className="item-img"
                         />
                       </a>
-                      <p align="center" style={{marginTop: "20px",}}>{movie?.original_title}</p>
+                      <p align="center" style={{marginTop: "11px",}}>{movie?.original_title}</p>
                       
                     </p>
                   </div>

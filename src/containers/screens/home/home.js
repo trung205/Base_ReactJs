@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
-import Search from "../../../components/search/search";
-import Menu from "../../../components/menu/menu";
 import ImdbIcon from "../../../components/imdbIcon/imdbIcon";
 import CardRelease from "../../../components/cardRelease/cardRelease";
 import CardComing from "../../../components/cardComing/cardComing";
@@ -12,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadMovies } from "../../../redux/action/index";
 import { useNavigate } from "react-router-dom";
 import { requestAllMovie } from "../../../common/axios";
+import Footer from "../../../components/footer/footer";
+import { animateScroll as scroll, scroller, Element } from "react-scroll";
 
 var countries = [
   "Afghanistan",
@@ -283,24 +283,6 @@ function Home() {
     return arrFeaturedMap;
   };
 
-  const Images = [
-    {
-      title: "title 1",
-      url: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Y2Fyc3xlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    },
-    {
-      title: "title 2",
-      url: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-    },
-    {
-      title: "",
-      url: "https://images.unsplash.com/photo-1517672651691-24622a91b550?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80",
-    },
-    {
-      url: "https://images3.alphacoders.com/118/1188044.jpg",
-    },
-  ];
-
   const onPageChanged = (data) => {
     const { allCountries } = state;
     const { currentPage, totalPages, pageLimit } = data;
@@ -309,8 +291,12 @@ function Home() {
     const currentCountries = allCountries.slice(offset, offset + pageLimit);
 
     setState({ ...state, currentPage, currentCountries, totalPages });
+    scroller.scrollTo("scroll-to-element", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
   };
-  const totalCountries = state.allCountries.length;
   if (!featured) {
     return (
       <div className="container_1">
@@ -320,7 +306,7 @@ function Home() {
   } else {
     return (
       <div className="container_1">
-        <Header />
+        <Header movie={dataHome?.item}/>
         <article>
           <div>
             <h2>Phim nổi bật</h2>
@@ -336,9 +322,7 @@ function Home() {
                   return (
                     <CardComing
                       number={1}
-                      srcImg={
-                        `https://image.tmdb.org/t/p/original${item?.poster_path}`
-                      }
+                      srcImg={`https://image.tmdb.org/t/p/original${item?.poster_path}`}
                       href={`/movies/${item?.id}`}
                     >
                       <h5>{item?.original_title}</h5>
@@ -348,7 +332,7 @@ function Home() {
                 })}
               </div>
             </div>
-            <div class="movie-release col-7">
+            <Element class="movie-release col-7" name="scroll-to-element">
               <div>
                 {dataHome?.item?.map((movie) => (
                   <CardRelease
@@ -358,21 +342,21 @@ function Home() {
                     <h2>{movie?.original_title}</h2>
                     <p>{movie?.title}</p>
                     <p>1 giờ 45 phút</p>
-                    <ImdbIcon />
+                    <ImdbIcon score={movie?.vote_average} />
                     <p className="text-description">{movie?.overview}</p>
                   </CardRelease>
                 ))}
               </div>
-
               <Pagination
                 totalRecords={featured?.totalItems}
                 pageLimit={20}
                 pageNeighbours={1}
                 onPageChanged={onPageChanged}
               />
-            </div>
+            </Element>
           </div>
         </article>
+        <Footer />
       </div>
     );
   }

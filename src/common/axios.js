@@ -74,23 +74,35 @@ export function requestActorInfo(id) {
   return handleResult(axiosInstance.get(`/actors/${id}?language=vi-VN`));
 }
 export function requestImageActor(id) {
-  return handleResult(axiosInstance.get(`https://api.themoviedb.org/3/person/${id}/images?api_key=1025bfc6c758fa3270b91d47122cb4ca`));
+  return handleResult(
+    axiosInstance.get(
+      `https://api.themoviedb.org/3/person/${id}/images?api_key=1025bfc6c758fa3270b91d47122cb4ca`
+    )
+  );
 }
 
 export function requestMovieByActor(id) {
-  return handleResult(axiosInstance.get(`http://localhost:3000/api/v1/actors/${id}/movies`));
+  return handleResult(
+    axiosInstance.get(`http://localhost:3000/api/v1/actors/${id}/movies`)
+  );
 }
 export function requestListImageActor(id) {
-  return axiosInstance.get(`https://api.themoviedb.org/3/person/${id}/images?api_key=1025bfc6c758fa3270b91d47122cb4ca`);
+  return axiosInstance.get(
+    `https://api.themoviedb.org/3/person/${id}/images?api_key=1025bfc6c758fa3270b91d47122cb4ca`
+  );
 }
 
 export function requestCreatePost(payload) {
   return handleResult(axiosInstance.post("/posts", payload));
 }
 
-export function requestPost(id,page) {
+export function requestPost(id, page) {
   return handleResult(axiosInstance.get(`/posts/${id}?page=${page}&limit=10`));
 }
-
+export function requestListMovieSearch(payload) {
+  return axiosInstance.get(
+    `https://api.themoviedb.org/3/search/movie?api_key=1025bfc6c758fa3270b91d47122cb4ca&language=en-US&page=1&include_adult=false&query=${payload}`
+  );
+}
 
 export default axiosInstance;

@@ -44,7 +44,14 @@ function App() {
           }
         />
         {/* <Route path="/home" element={<Home />} /> */}
-        <Route path="/movies/:id" element={<Movie />} />
+        <Route
+          path="/movies/:id"
+          element={
+            <PrivateRoute>
+              <Movie />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/actor/:id"
           element={
@@ -53,7 +60,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/user" element={<User />} />
+        <Route
+          path="/user/:id"
+          element={
+            <PrivateRoute>
+              <User />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );

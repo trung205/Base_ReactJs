@@ -60,9 +60,10 @@ input[type="submit"] {
   top: 100%;
   left: 0;
   right: 0;
-  max-height: 500px;
+  max-height: 300px;
   overflow-y: scroll;
-  background-color: rgb(36, 37, 38);
+  /* background-color: rgb(36, 37, 38); */
+  background-color: rgb(6 6 6 / 79%);
 }
 
 .autocomplete-items::-webkit-scrollbar-track {
@@ -122,4 +123,8 @@ input[type="submit"] {
 .autocomplete-active {
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+.back-drop-search {
+  margin-right: 10px;
 }

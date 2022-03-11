@@ -143,7 +143,8 @@ class Pagination extends Component {
                     >
                       {/* <span aria-hidden="true">&laquo;</span> */}
                       {/* <span className="sr-only">Previous</span> */}
-                      <span className="sr-only">...</span>
+                      {/* <span className="sr-only">...</span> */}
+                      ...
                     </a>
                   </li>
                 );
@@ -159,7 +160,8 @@ class Pagination extends Component {
                     >
                       {/* <span aria-hidden="true">&raquo;</span>
                       <span className="sr-only">Next</span> */}
-                      <span className="sr-only">...</span>
+                      {/* <span className="sr-only">...</span> */}
+                      ...
                     </a>
                   </li>
                 );

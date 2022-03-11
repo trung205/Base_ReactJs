@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background-color: #61dafb;
+  /* background-color: #61dafb; */
   width: 100%;
   height: 56px;
 }
@@ -8,7 +8,6 @@
 .header .start {
   display: flex;
   flex: 1;
-  background-color: red;
 }
 .header .center {
   display: flex;

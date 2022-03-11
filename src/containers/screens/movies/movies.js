@@ -20,10 +20,10 @@ import { useNavigate } from "react-router-dom";
 import { requestCreatePost, requestPost } from "../../../common/axios";
 import Pagination from "../../../components/panigation/panigation_real";
 import * as moment from "moment";
+import { animateScroll as scroll, Element, scroller } from "react-scroll";
 
 function Movies(props) {
   let params = useParams(); //568124
-  console.log(params);
   let navigate = useNavigate();
   const dataListActor = useSelector((state) => state.listActor);
   const dataMovieDetail = useSelector((state) => state.movieDetail);
@@ -55,13 +55,14 @@ function Movies(props) {
 
   useEffect(() => {
     dispatch(loadListActor(params.id));
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     dispatch(loadMoviesDetail(params.id));
-  }, []);
+  }, [params]);
 
   useEffect(() => {
+    console.log(state.currentPage, "page");
     dispatch(loadPost(params.id, state.currentPage));
   }, [state]);
 
@@ -102,7 +103,6 @@ function Movies(props) {
   };
 
   const handlePost = async () => {
-    console.log("tuanthin");
     try {
       if (handleValidation()) {
         setPost({ ...post, loading: true });
@@ -120,18 +120,16 @@ function Movies(props) {
   const onPageChanged = (data) => {
     const { allCountries } = state;
     const { currentPage, totalPages, pageLimit } = data;
-    console.log(data, "page");
     const offset = (currentPage - 1) * pageLimit;
     const currentCountries = allCountries.slice(offset, offset + pageLimit);
 
     setState({ ...state, currentPage, currentCountries, totalPages });
-    // dispatch(loadPost(params.id, state.currentPage));
-    listerRef.current.scrollIntoView({
-      behavior: "smooth",
+    scroller.scrollTo("scroll-to-element", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
     });
   };
-
-  const totalCountries = state.allCountries.length;
 
   const Carouselrender = useMemo(() => {
     return (
@@ -224,7 +222,11 @@ function Movies(props) {
                   {Carouselrender}
                 </div>
                 <div>
-                  <div className="section-header-group" ref={listerRef}>
+                  <Element
+                    className="section-header-group"
+                    ref={listerRef}
+                    name="scroll-to-element"
+                  >
                     <h3 className="section-header">Người dùng đánh giá</h3>
                     <button
                       href="/"
@@ -235,7 +237,7 @@ function Movies(props) {
                     >
                       + Thêm đánh giá
                     </button>
-                  </div>
+                  </Element>
                   <div className="lister">
                     <div className="header-lister">
                       <div>
